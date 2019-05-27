@@ -77,7 +77,6 @@ public without sharing class IDGenerator {
     Integer seedArrayLength;
     Integer elementIndex;
     for (Integer i = 0; i < length; i++){
-      //Integer startWith = (Integer)(Math.random() + 1); //will be either 0 or 1 as in integer
       Integer startWith = getRandomInt(2);
       System.debug('SOLIANT STARTWITH ' + startWith);
       seedArray = seeds.get(startWith);
@@ -85,7 +84,6 @@ public without sharing class IDGenerator {
 
       Boolean valid = false;
       Integer counter = 0;
-      //while (!valid && counter < 100){
       //while we haven't added anything to the array
       while (generatedStringLength == generatedString.size() && counter < 100){
         counter++;
