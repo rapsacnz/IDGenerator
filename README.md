@@ -1,4 +1,3 @@
-[callout_small]Generating a unique Id seems like a simple task, but sometimes it just isn't. Especially if your boss wants it in a strange format.[/callout_small]
 <h2>A Quick, Simple, Clean Id Generator</h2>
 Of course, you could use the built in auto-number system that Salesforce provides. You could even just use a Salesforce Id - you know it's going to be unique.
 However, you might just need a number with with a unique format, formatted in a certain way eg XX-XXX-XXXX, that is not going to come back and bite you with some rude letter combination.
@@ -43,7 +42,7 @@ Finally, we also remove a few outliers that might still conceivably still make w
 From here, we just randomly pick letters and numbers from the lists above, excluding any of the combos.
 This is just a matter of getting random integers in the right range (code shown here)
 
-[code lang="java"]
+```
 public static String getId(Integer length){
   //MICROSOFT Omits these letters and numbers: 0 1 2 5   A E I O U   L N S Z
   //leaving: 
@@ -86,13 +85,12 @@ public static String getId(Integer length){
   }
   return String.join(generatedString,'');
 }
-[/code]
-[su_spacer]
+```
 
 At this point, we have a nice Id, un-masked.
 
 To mask it, we use a little bit of regex and a loop. There are probably lots of ways of doing this, but this is a pretty simple one.
-[code lang="java"]
+```
   //this is the essence of the mask routine (look at my github for more details)
   String result = mask.replaceAll('X', '_');
   String regExp = '_';
@@ -101,19 +99,13 @@ To mask it, we use a little bit of regex and a loop. There are probably lots of 
   for (String idChar : idChars){
     result = result.replaceFirst(regExp, idChar);
   }
-[/code]
-[su_spacer]
+```
 Hence a mask of 'XX-XXX-XXXX' becomes '3B-4C9-G8J6' for example.
 
 Then, we return this nicely masked, generated Id back to the top routine, where it is compared against other Ids in the database.
 
 No Problemo!!
 
-All the files are located on
-<a href="https://github.com/rapsacnz/DatePicker/" target="_blank" rel="noopener noreferrer">Github</a>.
 
-Enjoy!
-<h2>Apex Tricks</h2>
-Have questions? Let us know in a comment below, or <a href="https://www.soliantconsulting.com/contact">contact our team</a> directly. You can also check out our other posts on <a href="https://www.soliantconsulting.com/category/salesforce">customizing your Salesforce solution</a>.
 
 
