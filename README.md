@@ -4,6 +4,10 @@ However, you might just need a number with with a unique format, formatted in a 
 
 Noone wants an Id like 12-BIG-BUTT. 
 
+<h5>TLDR... Call like this:</h5>
+```acct.Code__c = IDGenerator.getUniqueId(6, 'Account', 'Code__c', 'XXX-XXX');```
+
+
 <h4>Highlevel</h4>
 My approach is pretty simple and since it's tied to querying Salesforce for prior ids may not work for everyone.
 
